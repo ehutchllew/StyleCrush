@@ -14,6 +14,8 @@ import {
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import HomeView from './components/home/homeView.js'
+
 export default class StyleCrush extends Component {
   render() {
     return (
@@ -29,6 +31,7 @@ export default class StyleCrush extends Component {
           Cmd+D or shake for dev menu
         </Text>
         <Icon name="rocket" size={30} />
+        <HomeView />
       </View>
     );
   }
