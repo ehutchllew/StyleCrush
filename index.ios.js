@@ -12,6 +12,8 @@ import {
   View
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 export default class StyleCrush extends Component {
   render() {
     return (
@@ -26,6 +28,7 @@ export default class StyleCrush extends Component {
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
         </Text>
+        <Icon name="rocket" size={30} />
       </View>
     );
   }
