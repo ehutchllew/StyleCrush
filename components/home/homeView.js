@@ -3,8 +3,12 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Dimensions,
+  Image
 } from 'react-native';
+
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Interactable from 'react-native-interactable';
 
@@ -15,15 +19,31 @@ export default class HomeView extends Component {
 
   render(){
 
+    var deviceWidth = Dimensions.get('window').width;
+    var deviceHeight = Dimensions.get('window').height;
+
     return(
-      <Interactable.View
-       horizontalOnly={true}
-       snapPoints={[{x: 0}, {x: -200}]}>
-        <View>
-          <Text>Hey</Text>
+      <View>
+        <View style={[styles.container1, {width: deviceWidth}]}>
+          <Image style={{width:150, height: 50}} source={require('../../assets/stylecrush.png')} />
         </View>
-      </Interactable.View>
+      </View>
     );
 
   }
 }
+
+const styles = StyleSheet.create({
+  container1: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    backgroundColor: '#F5FCFF',
+  },
+});
+
+// <Interactable.View
+// dragEnabled={true}
+//  snapPoints={[{x: 0}]}>
+//  <Icon name="rocket" size={30} />
+// </Interactable.View>
