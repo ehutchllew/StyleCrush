@@ -19,11 +19,11 @@ export default class SideMenu extends Component{
             {x: deviceWidth/1.025, tension: 2000, damping: 0.5},
             {x: deviceWidth/2, tension: 2000, damping: 0.5}
           ]}
-          // gravityPoints={[
-          //   {x:}
-          // ]}
+          gravityPoints={[
+            {x: deviceWidth/1.025, strength: 1000, falloff: 50, damping: 0.7}
+          ]}
           horizontalOnly={true}>
-         <View style={[styles.container, {height: deviceHeight}]}>
+         <View style={[styles.container, {height: deviceHeight, width: deviceWidth + 10}]}>
           <Text style={styles.menuIcon}>|</Text>
         </View>
         </Interactable.View>
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
   menuIcon:{
     color: 'rgba(0,0,0,0.3)',
     marginLeft: 1,
-    fontSize: 30
+    fontSize: 30,
+    fontWeight: '500',
   }
 });
