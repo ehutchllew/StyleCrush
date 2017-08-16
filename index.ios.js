@@ -21,8 +21,8 @@ export default class StyleCrush extends Component {
     return (
       <View>
         <StatusBar hidden />
-        <SideMenu />
         <HomeView />
+        <SideMenu />
       </View>
     );
   }

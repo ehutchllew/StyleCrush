@@ -13,9 +13,19 @@ export default class SideMenu extends Component{
     return(
       <View>
         <Interactable.View
-        dragEnabled={true}
-         snapPoints={[{x: deviceWidth/1.05, y: deviceHeight/2.15}]}>
-         <Icon name="ios-arrow-back" size={30} />
+          dragEnabled={true}
+          initialPosition={{x: deviceWidth/1.05}}
+          snapPoints={[
+            {x: deviceWidth/1.05, tension: 2000, damping: 0.5},
+            {x: deviceWidth/2, tension: 2000, damping: 0.5}
+          ]}
+          // gravityPoints={[
+          //   {x:}
+          // ]}
+          horizontalOnly={true}>
+         <View style={[styles.container, {height: deviceHeight}]}>
+          <Icon name="ios-arrow-back" size={30} />
+        </View>
         </Interactable.View>
       </View>
 
@@ -27,5 +37,9 @@ export default class SideMenu extends Component{
 }
 
 const styles = StyleSheet.create({
-
+  container:{
+    backgroundColor: 'rgba(0,0,0,.5)',
+    borderRadius: 10,
+    justifyContent: 'center'
+  }
 });
