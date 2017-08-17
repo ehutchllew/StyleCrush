@@ -21,8 +21,10 @@ export default class StyleCrush extends Component {
     return (
       <View>
         <StatusBar hidden />
-        <SideMenu />
         <HomeView />
+        <View style={{position:"absolute"}}>
+          <SideMenu />
+        </View>
       </View>
     );
   }

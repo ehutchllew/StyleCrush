@@ -24,8 +24,11 @@ export default class HomeView extends Component {
 
     return(
       <View>
-        <View style={[styles.container1, {width: deviceWidth}]}>
+        <View style={[styles.container1, {width: deviceWidth, position: "absolute", zIndex: 5}]}>
           <Image style={{width:150, height: 50}} source={require('../../assets/stylecrush.png')} />
+        </View>
+        <View style={[styles.containerImg, {width: deviceWidth}]}>
+          <Image style={{width:deviceWidth, height:deviceHeight*.9}} source={require('../../assets/test.jpg')} />
         </View>
       </View>
     );
@@ -39,6 +42,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     backgroundColor: '#F5FCFF',
+  },
+  containerImg: {
+    alignItems: 'center'
   },
 });
 
