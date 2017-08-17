@@ -1,12 +1,50 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TouchableOpacity, Image, Text, Button, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, Button, Dimensions, Alert } from 'react-native';
+import SideButtons from '../../classes/SideButtons';
 
 import Interactable from 'react-native-interactable';
 import Icon from 'react-native-vector-icons/Ionicons';
+import sideMenuButtons from '../../content/sideMenu.buttons';
+
+var buttonArray = [];
 
 export default class SideMenu extends Component{
 
+  constructor(){
+    super();
+    this.state = {
+      refreshing: false
+    }
+  }
+
+  componentWillMount(){
+    this.populateButtons();
+  }
+
+  componentDidMount(){
+  }
+
+
+  populateButtons(){
+    buttonArray = [];
+
+    function _onPress(){
+      Alert.alert('Button Pressed');
+    }
+
+    sideMenuButtons.data.forEach(function(name){
+      var newButton = new SideButtons(name);
+      newButton.key = 'random' + Math.random();
+      buttonArray.push(
+        <View style={{marginTop: 15}} key={newButton.key}>
+          <Button title={newButton.title} onPress={() => _onPress()} color='#e83b79' />
+        </View>
+      );
+    })
+  }
+
   render(){
+    //console.log(buttonArray);
     var deviceWidth = Dimensions.get('window').width;
     var deviceHeight = Dimensions.get('window').height;
 
@@ -23,9 +61,12 @@ export default class SideMenu extends Component{
             {x: deviceWidth/1.025, strength: 1000, falloff: 50, damping: 0.7}
           ]}
           horizontalOnly={true}>
-         <View style={[styles.container, {height: deviceHeight, width: deviceWidth + 10}]}>
-          <Text style={styles.menuIcon}>|</Text>
-        </View>
+          <View style={[styles.container, {height: deviceHeight, width: deviceWidth + 10}]}>
+            <Text style={styles.menuIcon}>|</Text>
+            <View style={styles.buttonView}>
+              {buttonArray}
+            </View>
+          </View>
         </Interactable.View>
       </View>
 
@@ -40,12 +81,18 @@ const styles = StyleSheet.create({
   container:{
     backgroundColor: 'rgba(0,0,0,.2)',
     borderRadius: 10,
-    justifyContent: 'center'
+    flexDirection: 'row',
+    justifyContent: 'flex-start'
   },
   menuIcon:{
-    color: 'rgba(0,0,0,0.3)',
+    color: 'rgba(255,255,255,0.7)',
     marginLeft: 1,
     fontSize: 30,
     fontWeight: '500',
+    alignSelf: 'center'
+  },
+  buttonView:{
+    alignItems: 'flex-start',
+    marginLeft: 5
   }
 });
