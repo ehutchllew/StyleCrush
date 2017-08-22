@@ -10,21 +10,23 @@ import {
   StyleSheet,
   Text,
   View,
-  StatusBar
+  StatusBar,
 } from 'react-native';
 
-import HomeView from './components/home/homeView.js';
-import SideMenu from './components/sideMenu/sideMenu.js';
+import HomeView from './components/home/homeView';
+import SideMenu from './components/sideMenu/sideMenu';
 
 export default class StyleCrush extends Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <StatusBar hidden />
-        <HomeView />
-        <View style={{position:"absolute"}}>
-          <SideMenu />
+        <View>
+          <HomeView />
         </View>
+        {/*<View style={{position:"absolute", zIndex: 5}}>*/}
+          {/*<SideMenu />*/}
+        {/*</View>*/}
       </View>
     );
   }
