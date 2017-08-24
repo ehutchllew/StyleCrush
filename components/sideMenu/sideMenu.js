@@ -53,16 +53,16 @@ export default class SideMenu extends Component{
       <View>
         <Interactable.View
           dragEnabled={true}
-          initialPosition={{x: deviceWidth/1.025}}
+          // initialPosition={{x: deviceWidth/1.025}}
           snapPoints={[
-            {x: deviceWidth/1.025, tension: 2000, damping: 0.5},
-            {x: deviceWidth/2, tension: 2000, damping: 0.5}
+            {x: -deviceWidth*.0005, tension: 2000, damping: 0.6},
+            {x: -deviceWidth*.5, tension: 2000, damping: 0.6}
           ]}
           gravityPoints={[
-            {x: deviceWidth/1.025, strength: 1000, falloff: 50, damping: 0.7}
+            {x: -deviceWidth*.0005, strength: 500, falloff: 30, damping: 0.7}
           ]}
           horizontalOnly={true}>
-          <View style={[styles.container, {height: deviceHeight, width: deviceWidth + 10}]}>
+          <View style={[styles.container, {height: deviceHeight, width: deviceWidth*1.05}]}>
             <Text style={styles.menuIcon}>|</Text>
             <View style={styles.buttonView}>
               {buttonArray}

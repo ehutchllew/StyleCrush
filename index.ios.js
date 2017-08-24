@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Text,
   View,
-  StatusBar
+  StatusBar,
+  Dimensions
 } from 'react-native';
 
 import HomeView from './components/home/homeView.js';
@@ -18,11 +19,13 @@ import SideMenu from './components/sideMenu/sideMenu.js';
 
 export default class StyleCrush extends Component {
   render() {
+    var deviceWidth = Dimensions.get('window').width;
+
     return (
       <View>
         <StatusBar hidden />
         <HomeView />
-        <View style={{position:"absolute"}}>
+        <View style={{position:"absolute", left:deviceWidth*.975}}>
           <SideMenu />
         </View>
       </View>
