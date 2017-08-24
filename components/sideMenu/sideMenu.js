@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button, Dimensions, Alert } from 'react-native';
+import { StyleSheet, View, Text, Button, Dimensions, Alert, Animated } from 'react-native';
 import SideButtons from '../../classes/SideButtons';
 
 import Interactable from 'react-native-interactable';
@@ -13,7 +13,8 @@ export default class SideMenu extends Component{
   constructor(){
     super();
     this.state = {
-      refreshing: false
+      refreshing: false,
+      swoopIn: new Animated.Value(Dimensions.get('window').width*2)
     }
   }
 
@@ -36,7 +37,7 @@ export default class SideMenu extends Component{
       var newButton = new SideButtons(name);
       newButton.key = 'random' + Math.random();
       buttonArray.push(
-        <View style={{marginTop: 15}} key={newButton.key}>
+        <View style={[styles.individualButton, {width: Dimensions.get('window').width}]} key={newButton.key}>
           <Button title={newButton.title} onPress={() => _onPress()} color='#e83b79' />
         </View>
       );
@@ -94,5 +95,10 @@ const styles = StyleSheet.create({
   buttonView:{
     alignItems: 'flex-start',
     marginLeft: 5
+  },
+  individualButton:{
+    marginTop: 15,
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    alignItems: 'flex-start'
   }
 });
