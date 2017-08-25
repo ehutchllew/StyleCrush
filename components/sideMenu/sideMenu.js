@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button, Dimensions, Alert } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, Dimensions, Alert } from 'react-native';
 import SideButtons from '../../classes/SideButtons';
 
 import Interactable from 'react-native-interactable';
 import Icon from 'react-native-vector-icons/Ionicons';
 import sideMenuButtons from '../../content/sideMenu.buttons';
+
+const mainStyle = require('../mainStyle');
 
 var buttonArray = [];
 
@@ -13,7 +15,7 @@ export default class SideMenu extends Component{
   constructor(){
     super();
     this.state = {
-      refreshing: false
+      refreshing: false,
     }
   }
 
@@ -36,9 +38,9 @@ export default class SideMenu extends Component{
       var newButton = new SideButtons(name);
       newButton.key = 'random' + Math.random();
       buttonArray.push(
-        <View style={{marginTop: 15}} key={newButton.key}>
-          <Button title={newButton.title} onPress={() => _onPress()} color='#e83b79' />
-        </View>
+        <TouchableHighlight onPress={() => _onPress()} style={[styles.individualButton, {width: Dimensions.get('window').width}]} key={newButton.key} >
+            <Text style={mainStyle.buttonText}>{newButton.title}</Text>
+        </TouchableHighlight>
       );
     })
   }
@@ -52,16 +54,16 @@ export default class SideMenu extends Component{
       <View>
         <Interactable.View
           dragEnabled={true}
-          initialPosition={{x: deviceWidth/1.025}}
+          // initialPosition={{x: deviceWidth/1.025}}
           snapPoints={[
-            {x: deviceWidth/1.025, tension: 2000, damping: 0.5},
-            {x: deviceWidth/2, tension: 2000, damping: 0.5}
+            {x: -deviceWidth*.0005, tension: 2000, damping: 0.6},
+            {x: -deviceWidth*.5, tension: 2000, damping: 0.6}
           ]}
           gravityPoints={[
-            {x: deviceWidth/1.025, strength: 1000, falloff: 50, damping: 0.7}
+            {x: -deviceWidth*.0005, strength: 500, falloff: 30, damping: 0.7}
           ]}
           horizontalOnly={true}>
-          <View style={[styles.container, {height: deviceHeight, width: deviceWidth + 10}]}>
+          <View style={[styles.container, {height: deviceHeight, width: deviceWidth*1.05}]}>
             <Text style={styles.menuIcon}>|</Text>
             <View style={styles.buttonView}>
               {buttonArray}
@@ -94,5 +96,19 @@ const styles = StyleSheet.create({
   buttonView:{
     alignItems: 'flex-start',
     marginLeft: 5
+  },
+  individualButton:{
+    marginTop: 15,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    alignItems: 'flex-start',
+    borderRadius: 50,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowRadius: 3,
+    shadowOpacity: 1,
+    padding: 5
   }
 });
