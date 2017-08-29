@@ -78,7 +78,19 @@ export default class SideMenu extends Component{
               <TouchableHighlight onPress={ () => this.props.onMenuClick(1) } style={[styles.individualButton, {width: deviceWidth}]}>
                 <Text style={mainStyle.buttonText}>Featured</Text>
               </TouchableHighlight>
-              
+
+              <TouchableHighlight onPress={ () => this.props.onMenuClick(2) } style={[styles.individualButton, {width: deviceWidth}]}>
+                <Text style={mainStyle.buttonText}>Bohemian</Text>
+              </TouchableHighlight>
+
+              <TouchableHighlight onPress={ () => this.props.onMenuClick(3) } style={[styles.individualButton, {width: deviceWidth}]}>
+                <Text style={mainStyle.buttonText}>Grunge</Text>
+              </TouchableHighlight>
+
+              <TouchableHighlight onPress={ () => this.props.onMenuClick(4) } style={[styles.individualButton, {width: deviceWidth}]}>
+                <Text style={mainStyle.buttonText}>Haute</Text>
+              </TouchableHighlight>
+
             </View>
           </View>
         </Interactable.View>
