@@ -5,9 +5,11 @@ export default class GrungeView extends Component{
 
 
   render(){
+    var deviceWidth = Dimensions.get('window').width;
+
     return(
 
-      <View>
+      <View style={[styles.container, {width: deviceWidth}]}>
         <Text>Grunge View</Text>
       </View>
 
@@ -15,3 +17,12 @@ export default class GrungeView extends Component{
   }
 
 }
+
+const styles = StyleSheet.create({
+  container:{
+    justifyContent:'center',
+    alignItems: 'center',
+    backgroundColor: 'palegreen',
+    flex: 1,
+  }
+});

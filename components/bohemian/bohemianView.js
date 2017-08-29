@@ -5,9 +5,11 @@ export default class BohemianView extends Component{
 
 
   render(){
+    var deviceWidth = Dimensions.get('window').width;
+
     return(
 
-      <View>
+      <View style={[styles.container, {width: deviceWidth}]}>
         <Text>Bohemian View</Text>
       </View>
 
@@ -15,3 +17,12 @@ export default class BohemianView extends Component{
   }
 
 }
+
+const styles = StyleSheet.create({
+  container:{
+    justifyContent:'center',
+    alignItems: 'center',
+    backgroundColor: 'plum',
+    flex: 1,
+  }
+});

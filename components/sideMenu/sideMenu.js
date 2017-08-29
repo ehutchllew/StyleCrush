@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     marginLeft: 5
   },
   individualButton:{
-    marginTop: 15,
+    marginTop: 25,
     backgroundColor: 'rgba(0, 0, 0, 0.6)',
     alignItems: 'flex-start',
     borderRadius: 50,
@@ -133,6 +133,6 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 3,
     shadowOpacity: 1,
-    padding: 5
+    padding: 7.5
   }
 });
