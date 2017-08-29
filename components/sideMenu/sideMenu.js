@@ -12,38 +12,42 @@ var buttonArray = [];
 
 export default class SideMenu extends Component{
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       refreshing: false,
     }
+    props.onMenuClick = () => {};
   }
 
   componentWillMount(){
-    this.populateButtons();
+    // this.populateButtons();
   }
 
   componentDidMount(){
   }
 
-
-  populateButtons(){
-    buttonArray = [];
-
-    function _onPress(){
-      Alert.alert('Button Pressed');
-    }
-
-    sideMenuButtons.data.forEach(function(name){
-      var newButton = new SideButtons(name);
-      newButton.key = 'random' + Math.random();
-      buttonArray.push(
-        <TouchableHighlight onPress={() => _onPress()} style={[styles.individualButton, {width: Dimensions.get('window').width}]} key={newButton.key} >
-            <Text style={mainStyle.buttonText}>{newButton.title}</Text>
-        </TouchableHighlight>
-      );
-    })
+  componentWillUpdate(){
   }
+
+
+  // populateButtons(){
+  //   buttonArray = [];
+  //
+  //   function _onPress(){
+  //     this.props.onMenuClick(1);
+  //   }
+  //
+  //   sideMenuButtons.data.forEach(function(name){
+  //     var newButton = new SideButtons(name);
+  //     newButton.key = 'random' + Math.random();
+  //     buttonArray.push(
+  //       <TouchableHighlight onPress={() => _onPress()} style={[styles.individualButton, {width: Dimensions.get('window').width}]} key={newButton.key} >
+  //           <Text style={mainStyle.buttonText}>{newButton.title}</Text>
+  //       </TouchableHighlight>
+  //     );
+  //   })
+  // }
 
   render(){
     //console.log(buttonArray);
@@ -66,7 +70,15 @@ export default class SideMenu extends Component{
           <View style={[styles.container, {height: deviceHeight, width: deviceWidth*1.05}]}>
             <Text style={styles.menuIcon}>|</Text>
             <View style={styles.buttonView}>
-              {buttonArray}
+
+              <TouchableHighlight onPress={ () => this.props.onMenuClick(0) } style={[styles.individualButton, {width: deviceWidth}]}>
+                <Text style={mainStyle.buttonText}>Home</Text>
+              </TouchableHighlight>
+
+              <TouchableHighlight onPress={ () => this.props.onMenuClick(1) } style={[styles.individualButton, {width: deviceWidth}]}>
+                <Text style={mainStyle.buttonText}>Featured</Text>
+              </TouchableHighlight>
+              
             </View>
           </View>
         </Interactable.View>
