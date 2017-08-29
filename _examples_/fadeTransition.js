@@ -12,30 +12,41 @@ import {
   View,
   StatusBar,
   Dimensions,
+  Animated,
 } from 'react-native';
 
 import HomeView from './components/home/homeView';
 import SideMenu from './components/sideMenu/sideMenu';
 import FeaturedView from './components/featured/featuredView';
-import BohemianView from './components/bohemian/bohemianView';
-import GrungeView from './components/grunge/grungeView';
-import HauteView from './components/haute/hauteView';
-
-import * as Animatable from 'react-native-animatable';
 
 export default class StyleCrush extends Component {
 constructor(){
   super();
   this.state = {
     pageView: 0,
+    pageAnimation: new Animated.Value(1),
   };
 }
 
 
 onMenuChange(index){
   if(index !== this.state.pageView){
-    this.refs.mainView.bounceInUp(200).then(
-    this.setState({pageView: index}));
+    Animated.sequence([
+      Animated.timing(
+        this.state.pageAnimation, {
+          toValue: 0,
+          duration: 200
+        }
+      ),
+      Animated.timing(
+        this.state.pageAnimation, {
+          toValue: 1,
+          duration: 200
+        }
+      )
+    ]).start();
+
+    setTimeout(() => {this.setState({pageView: index})}, 200);
   } else{
     return;
   }
@@ -57,27 +68,18 @@ onMenuChange(index){
       );
     }
     if(this.state.pageView === 2){
-      currentView = (
-        <BohemianView />
-      );
+
     }
     if(this.state.pageView === 3){
-      currentView = (
-        <GrungeView />
-      );
-    }
-    if(this.state.pageView === 4){
-      currentView = (
-        <HauteView />
-      );
+
     }
 
     return (
       <View style={styles.container}>
         <StatusBar hidden />
-        <Animatable.View ref='mainView'>
+        <Animated.View style={{opacity: this.state.pageAnimation}}>
           {currentView}
-        </Animatable.View>
+        </Animated.View>
         <View style={{position:"absolute", left:deviceWidth*0.975}}>
           <SideMenu onMenuClick={(index) => this.onMenuChange(index)} />
         </View>
