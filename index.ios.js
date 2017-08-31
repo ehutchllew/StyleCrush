@@ -16,6 +16,7 @@ import {
 
 import HomeView from './components/home/homeView';
 import SideMenu from './components/sideMenu/sideMenu';
+import Categories from './components/categoryList/categoryList';
 import FeaturedView from './components/featured/featuredView';
 import BohemianView from './components/bohemian/bohemianView';
 import GrungeView from './components/grunge/grungeView';
@@ -48,7 +49,7 @@ onMenuChange(index){
 
     if(this.state.pageView === 0){
       currentView = (
-        <HomeView />
+        <Categories />
       );
     }
     if(this.state.pageView === 1){

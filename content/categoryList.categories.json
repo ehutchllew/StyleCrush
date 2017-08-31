@@ -1,0 +1,46 @@
+{
+  "data":[
+    {
+      "category": "Bohemian",
+      "images": [
+        {"src": "../../assets/test.jpg"},
+        {"src": "../../assets/test2.jpg"}
+      ]
+    },
+    {
+      "title": "Grunge",
+      "images": [
+        {"src": "../../assets/test.jpg"},
+        {"src": "../../assets/test2.jpg"}
+      ]
+    },
+    {
+      "title": "Haute",
+      "images": [
+        {"src": "../../assets/test.jpg"},
+        {"src": "../../assets/test2.jpg"}
+      ]
+    },
+    {
+      "title": "Prep",
+      "images": [
+        {"src": "../../assets/test.jpg"},
+        {"src": "../../assets/test2.jpg"}
+      ]
+    },
+    {
+      "title": "Urban",
+      "images": [
+        {"src": "../../assets/test.jpg"},
+        {"src": "../../assets/test2.jpg"}
+      ]
+    },
+    {
+      "title": "Vintage",
+      "images": [
+        {"src": "../../assets/test.jpg"},
+        {"src": "../../assets/test2.jpg"}
+      ]
+    }
+  ]
+}
